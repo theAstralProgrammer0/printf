@@ -1,6 +1,6 @@
 #include <unistd.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
   * print_char - prints char
@@ -28,8 +28,8 @@ int print_string(va_list ap)
 	int char_count = 0;
 	char *str = va_arg(ap, char *);
 
-	if (!str)
-		print_error("The argument does not match %s specifier");
+	if (str == NULL)
+		return (0);
 	while (*str)
 	{
 		char_count += write(1, str, 1);
