@@ -16,20 +16,19 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	if (format)
-	{
-		while (*format)
-		{
-			if (*format == '%')
-				char_count += p_func(ap, *++format);
-			else
-				char_count += write(1, format, 1);
+	if (format == NULL)
+		return (0);
 
-			++format;
-		}
-		return (char_count);
+	while (*format)
+	{
+		if (*format == '%')
+			char_count += p_func(ap, *++format);
+		else
+			char_count += write(1, format, 1);
+
+		++format;
 	}
-	return (0);
+	return (char_count);
 }
 
 /**

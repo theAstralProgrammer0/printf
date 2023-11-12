@@ -27,8 +27,11 @@ int print_string(va_list ap)
 	int char_count = 0;
 	char *str = va_arg(ap, char *);
 
-	if (str == NULL)
-		str = "(nil)";
+	if (ap == NULL)
+	{
+		write(2, "Error", 6);
+		return (0);
+	}
 	while (*str)
 	{
 		char_count += write(1, str, 1);
