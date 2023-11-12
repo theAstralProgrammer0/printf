@@ -1,5 +1,8 @@
 #include <unistd.h>
 #include "main.h"
+#include <string.h>
+
+#define MAX_BYTE_SIZE 30
 
 /**
   * print_char - prints char
@@ -24,18 +27,23 @@ int print_char(va_list ap)
   */
 int print_string(va_list ap)
 {
+	size_t i, len, byte_size;
 	int char_count = 0;
 	char *str = va_arg(ap, char *);
 
-	if (ap == NULL)
+	len = strlen(str);
+	byte_size = (len / MAX_BYTE_SIZE) + 1;
+
+	if (str == NULL)
 	{
 		write(2, "Error", 6);
 		return (0);
 	}
-	while (*str)
+
+	for (i = 0; i < byte_size; ++i)
 	{
-		char_count += write(1, str, 1);
-		++str;
+		char_count += write(1, str + (i * MAX_BYTE_SIZE),
+				MIN(MAX_BYTE_SIZE, len - (i * MAX_BYTE_SIZE)));
 	}
 	return (char_count);
 }
