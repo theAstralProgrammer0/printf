@@ -12,7 +12,7 @@ int print_char(va_list ap)
 	int ch = va_arg(ap, int);
 
 	if (ch == 0)
-		write(1, "\\0", 2);
+		return (write(1, "", 1));
 	return (write(1, &ch, 1));
 }
 
