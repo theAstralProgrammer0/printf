@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	{
 		while (*format)
 		{
-			if (*format == '%' && *++format != '\0')
+			if (*format == '%')
 				char_count += p_func(ap, *++format);
 			else
 				char_count += write(1, format, 1);
