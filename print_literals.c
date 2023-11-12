@@ -13,7 +13,7 @@ int print_char(va_list ap)
 	int ch = va_arg(ap, int);
 
 	if (ch == 0)
-		print_error("The argument does not match the %c specifier");
+		return (0);
 	return (write(1, &ch, 1));
 }
 
@@ -29,6 +29,7 @@ int print_string(va_list ap)
 	char *str = va_arg(ap, char *);
 
 	if (str == NULL)
+    print_error("Cannot enter NULL as printf format string");
 		return (0);
 	while (*str)
 	{
