@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 
 	if (!(*format))
-		write(1, "User input is needed", 21);
+		write(2, "User input is needed", 21);
 	if (format == NULL)
 		print_error("Cannot enter NULL as printf format string");
 
