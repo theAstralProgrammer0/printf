@@ -18,8 +18,7 @@ int _printf(const char *format, ...)
 	if (!(*format))
 		write(2, "User input is needed", 21);
 	if (format == NULL)
-		print_error("Cannot enter NULL as printf format string");
-
+		write(2, "User input is needed", 21);
 	while (*format)
 	{
 		if (*format == '%')
