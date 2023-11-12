@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -57,6 +58,5 @@ int p_func(va_list ap, char specifier)
 			exit(1);
 			break;
 	}
-
 	return (char_count);
 }
