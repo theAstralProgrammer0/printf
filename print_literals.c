@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
   * print_char - prints char
@@ -28,7 +29,8 @@ int print_string(va_list ap)
 	char *str = va_arg(ap, char *);
 
 	if (str == NULL)
-		str = "(nil)";
+    print_error("Cannot enter NULL as printf format string");
+		return (0);
 	while (*str)
 	{
 		char_count += write(1, str, 1);
