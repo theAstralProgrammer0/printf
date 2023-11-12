@@ -33,10 +33,10 @@ int _printf(const char *format, ...)
 }
 
 /**
-  * p_func - executes print function
-  * @ap: Variadic arguments
-  * @specifier: Format type pointer
-  *
+  * p_func - Auxilliary Function
+  * Description: It calls other print functions based on the specifier
+  * @ap: Argument Pointer
+  * @specifier: Format Specifier Character
   * Return: Number of chars printed
   */
 int p_func(va_list ap, char specifier)
@@ -54,6 +54,5 @@ int p_func(va_list ap, char specifier)
 		case '%':
 			char_count += write(1, "%", 1);
 			break;
-	}
 	return (char_count);
 }
