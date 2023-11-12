@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -58,7 +57,6 @@ int p_func(va_list ap, char specifier)
 			break;
 		case '\0':
 			print_error("Invalid Format");
-			exit(1);
 			break;
 	}
 
