@@ -15,20 +15,18 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	if (!(*format))
-		write(2, "User input is needed", 21);
-	if (format == NULL)
-		write(2, "User input is needed", 21);
-	while (*format)
+	if (format)
 	{
-		if (*format == '%')
-			char_count += p_func(ap, *++format);
-		else
-			char_count += write(1, format, 1);
+		while (*format)
+		{
+			if (*format == '%')
+				char_count += p_func(ap, *++format);
+			else
+				char_count += write(1, format, 1);
 
-		++format;
+			++format;
+		}
 	}
-
 	return (char_count);
 }
 
