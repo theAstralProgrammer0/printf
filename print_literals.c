@@ -35,6 +35,7 @@ int print_char(va_list ap)
 		default:
 			break;
 	}
+	va_end(ap);
 	return (write(1, &ch, 1));
 }
 
@@ -64,5 +65,6 @@ int print_string(va_list ap)
 		char_count += write(1, str + (i * MAX_BYTE_SIZE),
 				MIN(MAX_BYTE_SIZE, len - (i * MAX_BYTE_SIZE)));
 	}
+	va_end(ap);
 	return (char_count);
 }

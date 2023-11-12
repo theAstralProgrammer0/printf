@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 
 		++format;
 	}
+	va_end(ap);
 	return (char_count);
 }
 
@@ -58,5 +59,6 @@ int p_func(va_list ap, char specifier)
 			exit(1);
 			break;
 	}
+	va_end(ap);
 	return (char_count);
 }
