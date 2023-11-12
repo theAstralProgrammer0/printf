@@ -1,5 +1,3 @@
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
@@ -11,24 +9,26 @@
   */
 int _printf(const char *format, ...)
 {
-	int char_count = 0;
+	int char_count = 0, fmt_status;
 	va_list ap;
 
-	va_start(ap, format);
-
 	if (!(*format))
-		write(1, "User input is needed", 21);
+		return (char_count);
+	fmt_status = parse_format(format);
 
-	while (*format)
+	if (fmt_status == 1)
 	{
-		if (*format == '%')
-			char_count += p_func(ap, *++format);
-		else
-			char_count += write(1, format, 1);
-
-		++format;
+		va_start(ap, format);
+		while (*format)
+		{
+			if (*format == '%')
+				char_count += p_func(ap, *++format);
+			else
+				char_count += write(1, format, 1);
+			++format;
+		}
+		va_end(ap);
 	}
-
 	return (char_count);
 }
 
@@ -55,6 +55,5 @@ int p_func(va_list ap, char specifier)
 			char_count += write(1, "%", 1);
 			break;
 	}
-
 	return (char_count);
 }
