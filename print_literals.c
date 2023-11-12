@@ -14,8 +14,27 @@ int print_char(va_list ap)
 {
 	int ch = va_arg(ap, int);
 
-	if (ch == 0)
-		return (write(1, "", 1));
+	switch (ch)
+	{
+		case 0:
+			return write(1, "", 1);
+		case '\n':
+			return write(1, "\n", 1);
+		case '\r':
+			return write(1, "\r", 1);
+		case '\t':
+			return write(1, "\t", 1);
+		case '\a':
+			return write(1, "\a", 1);
+		case '\b':
+			return write(1, "\b", 1);
+		case '\v':
+			return write(1, "\v", 1);
+		case '\f':
+			return write(1, "\f", 1);
+		default:
+			break;
+	}
 	return (write(1, &ch, 1));
 }
 
