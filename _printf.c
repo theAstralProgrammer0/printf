@@ -1,5 +1,5 @@
 #include <unistd.h>
-#include <stdarg.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -18,6 +18,8 @@ int _printf(const char *format, ...)
 
 	if (!(*format))
 		write(1, "User input is needed", 21);
+	if (format == NULL)
+		print_error("Cannot enter NULL as printf format string");
 
 	while (*format)
 	{
@@ -33,10 +35,10 @@ int _printf(const char *format, ...)
 }
 
 /**
-  * p_func - executes print function
-  * @ap: Variadic arguments
-  * @specifier: Format type pointer
-  *
+  * p_func - Auxilliary Function
+  * Description: It calls other print functions based on the specifier
+  * @ap: Argument Pointer
+  * @specifier: Format Specifier Character
   * Return: Number of chars printed
   */
 int p_func(va_list ap, char specifier)
@@ -53,6 +55,10 @@ int p_func(va_list ap, char specifier)
 			break;
 		case '%':
 			char_count += write(1, "%", 1);
+			break;
+		case '\0':
+			print_error("Invalid Format");
+			exit(1);
 			break;
 	}
 
