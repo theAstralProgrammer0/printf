@@ -27,8 +27,9 @@ int _printf(const char *format, ...)
 
 			++format;
 		}
+		return (char_count);
 	}
-	return (char_count);
+	return (0);
 }
 
 /**
