@@ -55,7 +55,7 @@ int p_func(va_list ap, char specifier)
 			char_count += write(1, "%", 1);
 			break;
 		case '\0':
-			print_error("Invalid Format");
+			write(2, "Invalid Format", 15);
 			break;
 	}
 
