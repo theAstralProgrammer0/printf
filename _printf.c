@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 	{
 		write(2, "Cannot print null\n", 19);
 		va_end(ap);
-		exit(1);
+		return (-1);
 	}
 
 	while (*format)
