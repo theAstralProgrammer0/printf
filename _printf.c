@@ -24,7 +24,8 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 	{
 		write(2, "Cannot print null", 18);
-		return (0);
+		va_end(ap);
+		exit(1);
 	}
 
 	while (*format)
