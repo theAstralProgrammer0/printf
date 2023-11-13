@@ -46,7 +46,7 @@ int print_string(va_list ap)
 	{
 		write(2, "Error", 6);
 		va_end(ap);
-		return (0);
+		exit(1);
 	}
 
 	for (i = 0; i < byte_size; ++i)
