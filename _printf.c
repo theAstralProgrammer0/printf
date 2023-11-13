@@ -68,12 +68,11 @@ int p_func(va_list ap, char specifier)
 		case 'd':
 			char_count += print_decimal(ap);
 			break;
+		case 'i':
+			char_count += print_decimal(ap);
+			break;
 		case '%':
 			char_count += write(1, "%", 1);
-			break;
-		case '\0':
-			write(2, "Invalid Format\n", 16);
-			exit(1);
 			break;
 		default:
 			break;
