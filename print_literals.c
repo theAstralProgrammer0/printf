@@ -1,8 +1,8 @@
 #include <unistd.h>
 #include "main.h"
 #include <string.h>
-
-#define MAX_BYTE_SIZE 30
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
   * print_char - prints char
@@ -14,27 +14,8 @@ int print_char(va_list ap)
 {
 	int ch = va_arg(ap, int);
 
-	switch (ch)
-	{
-		case 0:
-			return (write(1, "", 1));
-		case '\n':
-			return (write(1, "\n", 1));
-		case '\r':
-			return (write(1, "\r", 1));
-		case '\t':
-			return (write(1, "\t", 1));
-		case '\a':
-			return (write(1, "\a", 1));
-		case '\b':
-			return (write(1, "\b", 1));
-		case '\v':
-			return (write(1, "\v", 1));
-		case '\f':
-			return (write(1, "\f", 1));
-		default:
-			break;
-	}
+	if (ch == 0)
+		return (write(1, "", 1));
 	va_end(ap);
 	return (write(1, &ch, 1));
 }
@@ -52,11 +33,13 @@ int print_string(va_list ap)
 	char *str = va_arg(ap, char *);
 
 	len = strlen(str);
-	byte_size = (len / MAX_BYTE_SIZE) + 1;
+	byte_size = (len / MAX_BYTE_SIZE) + 1; /**plus 1 to account for
+						 remainders*/
 
 	if (str == NULL)
 	{
 		write(2, "Error", 6);
+		va_end(ap);
 		return (0);
 	}
 
@@ -67,4 +50,24 @@ int print_string(va_list ap)
 	}
 	va_end(ap);
 	return (char_count);
+}
+
+int print_decimal(va_list ap)
+{
+	int count = 0;
+	int num = va_arg(ap, int);
+	char *number_string;
+	
+	if (num < 0)
+	{
+		write(1, "-", 1);
+		count++;
+		num = ABS(num);
+	}
+
+	number_string = int_to_string(num);
+	count += str_write(number_string);
+	free(number_string);
+	va_end(ap);
+	return (count);
 }

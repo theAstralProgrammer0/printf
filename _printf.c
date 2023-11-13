@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "main.h"
+#include <stdio.h>
 
 /**
   * _printf - prints to stdout
@@ -17,7 +18,10 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 
 	if (format == NULL)
+	{
+		write(2, "Cannot print null", 18);
 		return (0);
+	}
 
 	while (*format)
 	{
@@ -51,12 +55,16 @@ int p_func(va_list ap, char specifier)
 		case 's':
 			char_count += print_string(ap);
 			break;
-		case '%':
-			char_count += write(1, "%", 1);
+		case 'd':
+			char_count += print_decimal(ap);
 			break;
 		case '\0':
 			write(2, "Invalid Format\n", 16);
-			exit(1);
+			break;
+		case '%':
+			char_count += write(1, "%", 1);
+			break;
+		default:
 			break;
 	}
 	va_end(ap);
