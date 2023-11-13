@@ -1,15 +1,18 @@
 #include <unistd.h>
 #include "main.h"
 #include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
-  * print_char - prints char
-  * @ap: Variadic arguments
+  * print_char - Auxilliary Function
   *
-  * Return: Number of chars printed.
+  * Description: This function handles the %c format specifier
+  *
+  * @ap: Argument Pointer
+  *
+  * Return: (Number of chars printed) int
   */
+
 int print_char(va_list ap)
 {
 	int ch = va_arg(ap, int);
@@ -21,11 +24,15 @@ int print_char(va_list ap)
 }
 
 /**
-  * print_string - prints a string
-  * @ap: Variadic arguments
+  * print_string - Auxilliary Function
+  *
+  * Description: This function handles the %s formar specifier
+  *
+  * @ap: Argument Pointer
   *
   * Return: Number of chars printed.
   */
+
 int print_string(va_list ap)
 {
 	size_t i, len, byte_size;
@@ -33,8 +40,7 @@ int print_string(va_list ap)
 	char *str = va_arg(ap, char *);
 
 	len = strlen(str);
-	byte_size = (len / MAX_BYTE_SIZE) + 1; /**plus 1 to account for
-						 remainders*/
+	byte_size = (len / MAX_BYTE_SIZE) + 1; /**1 to account for remainders*/
 
 	if (str == NULL)
 	{
@@ -50,24 +56,4 @@ int print_string(va_list ap)
 	}
 	va_end(ap);
 	return (char_count);
-}
-
-int print_decimal(va_list ap)
-{
-	int count = 0;
-	int num = va_arg(ap, int);
-	char *number_string;
-	
-	if (num < 0)
-	{
-		write(1, "-", 1);
-		count++;
-		num = ABS(num);
-	}
-
-	number_string = int_to_string(num);
-	count += str_write(number_string);
-	free(number_string);
-	va_end(ap);
-	return (count);
 }

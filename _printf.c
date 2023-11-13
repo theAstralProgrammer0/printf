@@ -1,15 +1,19 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "main.h"
-#include <stdio.h>
 
 /**
-  * _printf - prints to stdout
-  * @format: Specifies the format to print
-  * @...: Variadic arguments
+  * _printf - Entry Point
   *
-  * Return: Number of chars printed.
+  * Summary: This function prints to stdout
+  *
+  * @format: Format String
+  *
+  * @...: Variable Arguments
+  *
+  * Return: (char_count) int
   */
+
 int _printf(const char *format, ...)
 {
 	int char_count = 0;
@@ -38,11 +42,16 @@ int _printf(const char *format, ...)
 
 /**
   * p_func - Auxilliary Function
+  *
   * Description: It calls other print functions based on the specifier
+  *
   * @ap: Argument Pointer
+  *
   * @specifier: Format Specifier Character
-  * Return: Number of chars printed
+  *
+  * Return: (char_count) int - Number of chars printed
   */
+
 int p_func(va_list ap, char specifier)
 {
 	int char_count = 0;
@@ -58,11 +67,12 @@ int p_func(va_list ap, char specifier)
 		case 'd':
 			char_count += print_decimal(ap);
 			break;
-		case '\0':
-			write(2, "Invalid Format\n", 16);
-			break;
 		case '%':
 			char_count += write(1, "%", 1);
+			break;
+		case '\0':
+			write(2, "Invalid Format\n", 16);
+			exit(1);
 			break;
 		default:
 			break;
