@@ -74,6 +74,11 @@ int str_write(char *number_string)
 	size_t i, len, byte_size;
 	int count = 0;
 
+	if (number_string == NULL)
+	{
+		write(2, "Error", 6);
+		return (-1);
+	}
 	len = strlen(number_string);
 	byte_size = ((len - 1) / MAX_BYTE_SIZE) + 1;
 

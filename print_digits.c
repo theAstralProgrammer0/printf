@@ -19,6 +19,11 @@ int print_decimal(va_list ap)
 	int num = va_arg(ap, int);
 	char *number_string;
 
+	if (!num)
+	{
+		write(2, "Error", 6);
+		return (-1);
+	}
 	if (num < 0)
 	{
 		write(1, "-", 1);
