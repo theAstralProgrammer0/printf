@@ -2,7 +2,16 @@
 #include <unistd.h>
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
+
+/**
+  * alloc - Auxilliary Function
+  *
+  * Summary: Allocates memory, frees and returns NULL if failed
+  *
+  * @size: Size ot be allocated
+  *
+  * Return: (ptr) Success, (NULL) Failure
+  */
 
 void *alloc(size_t size)
 {
@@ -16,6 +25,15 @@ void *alloc(size_t size)
 	return (ptr);
 }
 
+/**
+  * int_to_string - Auxilliary Function
+  *
+  * Description: Converts and integer to a number string
+  *
+  * @num: Integer to be stringified
+  *
+  * Return: (num_str) char *
+  */
 
 char *int_to_string(int num)
 {
@@ -29,10 +47,9 @@ char *int_to_string(int num)
 	{
 		length++;
 		num /= 10;
-	}	
+	}
 	num_str = (char *) alloc(length * sizeof(char));
 
-	
 	for (i = length - 2 ; i >= 0; --i)
 	{
 		num_str[i] = (tmp % 10) + '0';
@@ -42,6 +59,15 @@ char *int_to_string(int num)
 	return (num_str);
 }
 
+/**
+  * str_write - Auxilliary Function
+  *
+  * Summary: This function writes any string to standard output
+  *
+  * @number_string: String to be written to stdout
+  *
+  * Return: (count) int - Count of chars written
+  */
 
 int str_write(char *number_string)
 {
