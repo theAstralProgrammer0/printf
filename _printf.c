@@ -23,15 +23,21 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 	{
-		write(2, "Cannot print null", 18);
+		write(2, "Cannot print null\n", 19);
 		va_end(ap);
 		exit(1);
 	}
 
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%' && *++format != '\0')
 			char_count += p_func(ap, *++format);
+		else if (*++format == '\0')
+		{
+			write(2, "Error\n", 7);
+			va_end(ap);
+			exit(1);
+		}
 		else
 			char_count += write(1, format, 1);
 
