@@ -26,7 +26,8 @@ int print_decimal(va_list ap)
 		count++;
 		num = ABS(num);
 	}
-
+	if (num == 0)
+		return (write(1, "0", 1));
 	number_string = int_to_string(num);
 	count += str_write(number_string);
 	free(number_string);
