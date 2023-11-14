@@ -16,28 +16,33 @@
 
 int _printf(const char *format, ...)
 {
-	int char_count = 0;
+	int char_count = 0, fmt_status;
 	va_list ap;
 
-	va_start(ap, format);
 
 	if (format == NULL)
 	{
 		write(2, "Cannot print null\n", 19);
-		va_end(ap);
-		return (-1);
+		return (0);
 	}
+	fmt_status = parse_format(format);
 
-	while (*format)
+	if (fmt_status == 1)
 	{
-		if (*format == '%')
-			char_count += p_func(ap, *++format);
-		else
-			char_count += write(1, format, 1);
+		va_start(ap, format);
+		while (*format)
+		{
+			if (*format == '%')
+				char_count += p_func(ap, *++format);
+			else
+				char_count += write(1, format, 1);
 
-		++format;
+			++format;
+		}
+		va_end(ap);
 	}
-	va_end(ap);
+	else
+		write(1, "Invalid format specifier\n", 26);
 	return (char_count);
 }
 
@@ -73,8 +78,6 @@ int p_func(va_list ap, char specifier)
 			break;
 		case '%':
 			char_count += write(1, "%", 1);
-			break;
-		default:
 			break;
 	}
 	va_end(ap);
