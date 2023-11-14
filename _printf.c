@@ -71,8 +71,6 @@ int p_func(va_list ap, char specifier)
 			char_count += print_string(ap);
 			break;
 		case 'd':
-			char_count += print_decimal(ap);
-			break;
 		case 'i':
 			char_count += print_decimal(ap);
 			break;
