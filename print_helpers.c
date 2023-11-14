@@ -35,11 +35,11 @@ void *alloc(size_t size)
   * Return: (num_str) char *
   */
 
-char *int_to_string(int num)
+char *int_to_string(long num)
 {
-	int length = 1, tmp;
+	long length = 1, tmp;
 	char *num_str;
-	int i;
+	long i;
 
 	tmp = num;
 

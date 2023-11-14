@@ -18,17 +18,18 @@ int print_decimal(va_list ap)
 {
 	int count = 0;
 	int num = va_arg(ap, int);
+	long big_num = (long) num;
 	char *number_string;
 
-	if (num < 0)
+	if (big_num < 0)
 	{
 		write(1, "-", 1);
 		count++;
-		num = ABS(num);
+		big_num = labs(big_num);
 	}
-	if (num == 0)
+	if (big_num == 0)
 		return (write(1, "0", 1));
-	number_string = int_to_string(num);
+	number_string = int_to_string(big_num);
 	count += str_write(number_string);
 	free(number_string);
 	va_end(ap);

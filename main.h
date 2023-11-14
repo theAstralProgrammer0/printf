@@ -2,7 +2,6 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <string.h>
-#define ABS(x) ((x) < 0 ? -(x) : (x))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 #define MAX_BYTE_SIZE 30
 
@@ -14,7 +13,7 @@ void print_error(char *);
 int parse_format(const char *);
 
 void *alloc(size_t);
-char *int_to_string(int);
+char *int_to_string(long);
 int str_write(char *);
 int print_decimal(va_list);
 
