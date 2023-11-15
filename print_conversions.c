@@ -76,7 +76,7 @@ int print_binary(va_list ap)
 
   if (num == 0)
   {
-	  count += write(1, '0', 1);
+	  count += write(1, "0", 1);
 	  return (count);
   }
   while (num)
