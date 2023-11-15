@@ -72,7 +72,7 @@ int print_binary(va_list ap)
   int i;
   unsigned int count = 0, length = 1, num = va_arg(ap, unsigned int);
   char *num_string, *buffer;
-  int tmp = num;
+  long tmp = num;
   while (num)
   {
     num /= 2;
