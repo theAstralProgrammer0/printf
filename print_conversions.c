@@ -34,3 +34,23 @@ int rot13(va_list ap)
 	}
 	return (count);
 }
+
+/**
+ * print_rev - print a string in reverse
+ * @ap: variadic argument
+ *
+ * Return: Number of char printed to stdout
+ */
+int print_rev(va_list ap)
+{
+	int len, i, count = 0;
+	char *str = va_arg(ap, char *);
+
+	len = strlen(str);
+
+	if (len == 0)
+		return (0);
+	for (i = len - 1; i >= 0; i--)
+		count += write(1, &str[i], 1);
+	return (count);
+}

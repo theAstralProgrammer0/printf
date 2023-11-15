@@ -12,6 +12,7 @@ int print_string(va_list);
 int p_func(va_list, char);
 int parse_format(const char *);
 int rot13(va_list);
+int print_rev(va_list);
 
 void *alloc(size_t);
 char *int_to_string(long);

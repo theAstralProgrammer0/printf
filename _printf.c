@@ -77,6 +77,9 @@ int p_func(va_list ap, char specifier)
 		case '%':
 			char_count += write(1, "%", 1);
 			break;
+		case 'r':
+			char_count += print_rev(ap);
+			break;
 		case 'R':
 			char_count += rot13(ap);
 			break;
