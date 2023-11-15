@@ -91,7 +91,7 @@ int str_write(char *number_string)
 }
 
 
-char *print_bin_helper(int num, char *buffer)
+char *print_bin_helper(unsigned int num, char *buffer)
 {
         if (num == 0)
                 return (buffer);

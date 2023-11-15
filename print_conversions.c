@@ -69,7 +69,8 @@ int print_rev(va_list ap)
 
 int print_binary(va_list ap)
 {	
-  int i, count = 0, length = 1, num = va_arg(ap, int);
+  int i;
+  unsigned int count = 0, length = 1, num = va_arg(ap, unsigned int);
   char *num_string, *buffer;
   int tmp = num;
   while (num)
