@@ -83,6 +83,9 @@ int p_func(va_list ap, char specifier)
 		case 'R':
 			char_count += rot13(ap);
 			break;
+		case 'b':
+			char_count += print_binary(ap);
+			break;
 	}
 	va_end(ap);
 	return (char_count);

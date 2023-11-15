@@ -23,6 +23,7 @@ int print_char(va_list ap)
 	return (write(1, &ch, 1));
 }
 
+
 /**
   * print_string - Auxilliary Function
   *
@@ -32,7 +33,6 @@ int print_char(va_list ap)
   *
   * Return: Number of chars printed.
   */
-
 int print_string(va_list ap)
 {
 	size_t i, len, byte_size;
@@ -56,4 +56,27 @@ int print_string(va_list ap)
 	}
 	va_end(ap);
 	return (char_count);
+}
+
+/**
+  * print_string - Auxilliary Function
+  *
+  * Description: This function handles the %s formar specifier
+  *
+  * @ap: Argument Pointer
+  *
+  * Return: Number of chars printed.
+  */
+
+int print_string_rev(char *str)
+{
+	int len, i, count = 0;
+
+	if (str == NULL)
+		return (0);
+	len = strlen(str);
+
+	for (i = len - 1; i >= 0; --i)
+		count += write(1, &str[i], 1);
+	return (count);
 }

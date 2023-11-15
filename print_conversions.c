@@ -54,3 +54,37 @@ int print_rev(va_list ap)
 		count += write(1, &str[i], 1);
 	return (count);
 }
+
+/**
+ * print_binary - Auxilliary Function
+ *
+ * Description: This function handles the binary specifier %b which converts
+ * an uncsigned int into binary
+ *
+ * @ap: Argument Pointer
+ *
+ * Return: (count) int
+ */
+
+int print_binary(va_list ap);
+{	
+  int i, count = 0, length = 1, num = va_arg(ap, int);
+  char *num_string, *buffer;
+  int tmp = num;
+  while (num)
+  {
+    num /= 2;
+    length++;
+  }
+  buffer = (char *) malloc(length * sizeof(char));
+  buffer[length - 1] = '\0';
+
+  num_string = print_bin_helper(tmp, buffer);
+  --num_string;
+  
+  for (i = 0; i < length - 1; ++i)
+    count += write(1, &num_string[i], 1);
+  
+  free(buffer);
+  return (count);
+}
