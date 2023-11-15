@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * rot13 - prints the rotated position of a string
@@ -66,7 +67,7 @@ int print_rev(va_list ap)
  * Return: (count) int
  */
 
-int print_binary(va_list ap);
+int print_binary(va_list ap)
 {	
   int i, count = 0, length = 1, num = va_arg(ap, int);
   char *num_string, *buffer;
@@ -76,13 +77,13 @@ int print_binary(va_list ap);
     num /= 2;
     length++;
   }
-  buffer = (char *) malloc(length * sizeof(char));
+  buffer = (char *) alloc(length * sizeof(char));
   buffer[length - 1] = '\0';
 
   num_string = print_bin_helper(tmp, buffer);
   --num_string;
   
-  for (i = 0; i < length - 1; ++i)
+  for (i = length - 2; i >= 0; --i)
     count += write(1, &num_string[i], 1);
   
   free(buffer);

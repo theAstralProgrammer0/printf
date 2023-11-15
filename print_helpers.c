@@ -96,8 +96,8 @@ char *print_bin_helper(int num, char *buffer)
         if (num == 0)
                 return (buffer);
 
-        num /= 2;
         *buffer = (num % 2) + '0';
+        num /= 2;
         ++buffer;
         print_bin_helper(num, buffer);
 
