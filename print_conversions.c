@@ -73,6 +73,12 @@ int print_binary(va_list ap)
   unsigned int count = 0, length = 1, num = va_arg(ap, unsigned int);
   char *num_string, *buffer;
   long tmp = num;
+
+  if (num == 0)
+  {
+	  count += write(1, '0', 1);
+	  return (count);
+  }
   while (num)
   {
     num /= 2;
