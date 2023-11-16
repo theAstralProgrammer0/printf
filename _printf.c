@@ -86,6 +86,16 @@ int p_func(va_list ap, char specifier)
 		case 'b':
 			char_count += print_binary(ap);
 			break;
+		case 'u':
+			char_count += print_unsigned(ap);
+			break;
+		case 'o':
+			char_count += print_ocatal(ap);
+			break;
+		case 'x':
+		case 'X':
+			char_count += print_hexa(ap);
+			break;
 	}
 	va_end(ap);
 	return (char_count);

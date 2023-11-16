@@ -35,3 +35,25 @@ int print_decimal(va_list ap)
 	va_end(ap);
 	return (count);
 }
+
+int print_unsigned(va_list ap)
+{
+	count += print_digit(ap);
+	return (count);
+}
+
+
+int print_octal(va_list ap)
+{
+	/**code*/
+
+	return (count);
+}
+
+
+int print_octal(va_list ap)
+{
+	/**code*/
+
+	return (count);
+}

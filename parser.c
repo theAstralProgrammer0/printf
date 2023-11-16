@@ -23,7 +23,10 @@ int parse_format(const char *fmt)
 			if (fmt[i + 1] != 'c' && fmt[i + 1] != 's' && fmt[i +
 					1] != '%' && fmt[i + 1] != 'd' && fmt[i
 					+ 1] != 'i' && fmt[i + 1] != 'r' && fmt
-					[i + 1] != 'R' && fmt[i + 1] != 'b')
+					[i + 1] != 'R' && fmt[i + 1] != 'b' &&
+					fmt[i + 1] != 'u' && fmt[i + 1] != 'o'
+					&& fmt[i + 1] != 'x' && fmt[i + 1] !=
+					'X')
 			{
 				ret_val = 0;
 				break;
