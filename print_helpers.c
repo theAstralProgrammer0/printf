@@ -18,10 +18,7 @@ void *alloc(size_t size)
 	void *ptr = malloc(size);
 
 	if (ptr == NULL)
-	{
-		free(ptr);
 		return (NULL);
-	}
 	return (ptr);
 }
 
