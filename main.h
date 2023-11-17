@@ -26,6 +26,6 @@ int print_unsigned(va_list);
 int print_octal(va_list);
 int print_hexa(va_list);
 int print_hexa_upper(va_list);
-
+int print_pointers(va_list);
 
 #endif

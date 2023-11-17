@@ -98,6 +98,9 @@ int p_func(va_list ap, char specifier)
 		case 'X':
 			char_count += print_hexa_upper(ap);
 			break;
+		case 'p':
+			char_count += print_pointers(ap);
+			break;
 	}
 	va_end(ap);
 	return (char_count);
