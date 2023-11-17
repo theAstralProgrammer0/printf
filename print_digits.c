@@ -92,8 +92,8 @@ int print_octal(va_list ap)
 
 int print_hexa(va_list ap)
 {
-	int i, j, k;
-	unsigned int count = 0, length = 1, num = va_arg(ap, unsigned int);
+	int i, j;
+	unsigned int k, count = 0, length = 1, num = va_arg(ap, unsigned int);
 	char *hex_string, *syms = "0123456789abcdef";
 	long tmp = num;
 
