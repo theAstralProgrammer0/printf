@@ -88,7 +88,7 @@ int str_write(char *number_string)
 }
 
 
-char *print_bin_helper(unsigned int num, char *buffer)
+char *print_bin_helper(unsigned long num, char *buffer)
 {
         if (num == 0)
                 return (buffer);
@@ -97,6 +97,20 @@ char *print_bin_helper(unsigned int num, char *buffer)
         num /= 2;
         ++buffer;
         print_bin_helper(num, buffer);
+
+        return (buffer);
+}
+
+
+char *print_oct_helper(unsigned long num, char *buffer)
+{
+        if (num == 0)
+                return (buffer);
+
+        *buffer = (num % 8) + '0';
+        num /= 8;
+        ++buffer;
+        print_oct_helper(num, buffer);
 
         return (buffer);
 }
