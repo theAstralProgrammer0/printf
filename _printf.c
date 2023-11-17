@@ -93,8 +93,10 @@ int p_func(va_list ap, char specifier)
 			char_count += print_octal(ap);
 			break;
 		case 'x':
-		case 'X':
 			char_count += print_hexa(ap);
+			break;
+		case 'X':
+			char_count += print_hexa_upper(ap);
 			break;
 	}
 	va_end(ap);

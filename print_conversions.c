@@ -96,3 +96,47 @@ int print_binary(va_list ap)
   free(buffer);
   return (count);
 }
+
+int print_hexa_upper(va_list ap)
+{
+        int i, j;
+        unsigned int k, count = 0, length = 1, num = va_arg(ap, unsigned int);
+        char *hex_string, *syms = "0123456789ABCDEF";
+        long tmp = num;
+
+        if (num == 0)
+        {
+                count += write(1, "0", 1);
+                return (count);
+        }
+
+        while (num)
+        {
+                num /= 16;
+                length++;
+        }
+
+        hex_string = (char *) alloc(length * sizeof(char));
+
+        for (j = length - 2; j >= 0; --j)
+        {
+                for (i = 0; i < 16; ++i)
+                {
+                        if (i == tmp % 16)
+                        {
+                                hex_string[j] = syms[i];
+                                tmp /= 16;
+                                break;
+                        }
+                }
+        }
+
+        hex_string[length - 1] = '\0';
+
+        for (k = 0; k < length - 1; ++k)
+                count += write(1, &hex_string[k], 1);
+
+        free(hex_string);
+        return (count);
+}
+
